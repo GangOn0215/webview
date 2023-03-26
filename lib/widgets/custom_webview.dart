@@ -5,7 +5,12 @@ import 'package:webview_test/widgets/custom_android_webview.dart';
 import 'package:webview_test/widgets/custom_window_webview.dart';
 
 class CustomWebview extends StatefulWidget {
-  const CustomWebview({super.key});
+  final String url;
+
+  const CustomWebview({
+    super.key,
+    required this.url,
+  });
 
   @override
   State<CustomWebview> createState() => _CustomWebviewState();
@@ -19,16 +24,21 @@ class _CustomWebviewState extends State<CustomWebview> {
     super.initState();
 
     if (Platform.isAndroid) {
-      platformWebview = const CustomAndroidWebview();
+      platformWebview = CustomAndroidWebview(url: widget.url);
     } else if (Platform.isWindows) {
-      platformWebview = const CustomWindowWebview();
+      platformWebview = CustomWindowWebview(url: widget.url);
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: platformWebview,
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('test'),
+      ),
+      body: Container(
+        child: platformWebview,
+      ),
     );
   }
 }

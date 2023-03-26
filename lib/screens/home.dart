@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:webview_test/widgets/custom_webview.dart';
+import 'package:webview_test/widgets/webview_lists.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -16,6 +16,18 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    return const CustomWebview();
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text('Webview Test'),
+      ),
+      body: Container(
+        padding: const EdgeInsets.symmetric(
+          vertical: 20,
+          horizontal: 50,
+        ),
+        child: WebviewLists(),
+      ),
+    );
   }
 }

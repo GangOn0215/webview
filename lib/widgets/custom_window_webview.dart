@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:webview_windows/webview_windows.dart';
 
 class CustomWindowWebview extends StatefulWidget {
-  const CustomWindowWebview({super.key});
+  final String url;
+
+  const CustomWindowWebview({
+    super.key,
+    required this.url,
+  });
 
   @override
   State<CustomWindowWebview> createState() => _CustomWindowWebviewState();
@@ -14,7 +19,7 @@ class _CustomWindowWebviewState extends State<CustomWindowWebview> {
   Future<void> initPlatformState() async {
     await _webViewController.initialize();
 
-    await _webViewController.loadUrl('');
+    await _webViewController.loadUrl(widget.url);
   }
 
   @override
